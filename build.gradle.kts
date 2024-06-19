@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "ru.itskekoff.aaio"
-version = "1.0"
+version = "1.1"
 
 repositories {
     mavenCentral()
@@ -13,6 +13,11 @@ repositories {
 java {
     withSourcesJar()
     withJavadocJar()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
