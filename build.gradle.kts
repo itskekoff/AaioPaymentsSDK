@@ -37,7 +37,29 @@ publishing {
     publications {
         create<MavenPublication>(project.name) {
             from(components["java"])
-            setArtifacts(configurations.archives.get().allArtifacts)
+            pom {
+                name.set(project.name)
+                description.set("A application to interact with aaio payment api")
+                url.set("https://github.com/itskekoff/AaioPaymentsSDK")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("itskekoff")
+                        name.set("Pablo")
+                        email.set("itskekoff@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/itskekoff/AaioPaymentsSDK.git")
+                    developerConnection.set("scm:git:ssh://github.com:itskekoff/AaioPaymentsSDK.git")
+                    url.set("https://github.com/itskekoff/AaioPaymentsSDK")
+                }
+            }
         }
     }
 }
