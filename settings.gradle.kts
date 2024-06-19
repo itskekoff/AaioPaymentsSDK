@@ -1,1 +1,1 @@
-rootProject.name = "AaioPaymentsSDK"
+rootProject.name = "aaio-payments-sdk"
