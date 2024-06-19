@@ -53,10 +53,11 @@ Aaio Java SDK предоставляет удобный способ взаим�
 Примеры использования SDK можно найти в тестах. Вот базовый пример, как начать работу с SDK:
 
 ```java
-import com.itskekoff.aaio.AaioClient;
+import ru.itskekoff.aaio.client.AaioClient;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AaioClient client = new AaioClient("api_key", "secret_key_no_2", "shop_id");
 
         System.out.println(client.createBalanceInfoRequest());
