@@ -31,7 +31,7 @@ Aaio Java SDK предоставляет удобный способ взаим�
 
 1. Добавьте репозиторий в ваш файл pom.xml:
 ```xml
-        <repositories>
+   <repositories>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
@@ -41,7 +41,7 @@ Aaio Java SDK предоставляет удобный способ взаим�
 
 2. Добавьте зависимость в ваш файл pom.xml:
 ```xml
-        <dependency>
+   <dependency>
         <groupId>com.github.itskekoff</groupId>
         <artifactId>AaioPaymentsSDK</artifactId>
         <version>1.1</version>
