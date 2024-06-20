@@ -40,7 +40,7 @@ public class PaymentStatusChecker {
                     scheduler.shutdown();
                 }
             } catch (IOException e) {
-                future.completeExceptionally(new ClientException("Произошла ошибка при получении статуса", e));
+                future.completeExceptionally(new ClientException("Error has occurred while checking status", e));
                 scheduler.shutdown();
             }
         }, 0, 5, TimeUnit.SECONDS);
