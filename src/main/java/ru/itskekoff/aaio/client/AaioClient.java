@@ -83,19 +83,18 @@ public class AaioClient {
     /**
      * Unique function of request creating for client's api methods
      *
-     * @param formBody Request body
      * @param url      Request url
      * @param _class   Class of retrieving T object
      * @return {@link T} object
      * @throws IOException If request exception occurred
      */
-    public <T> T request(RequestBody formBody, HttpUrl url, Class<T> _class) throws IOException {
+    public <T> T request(HttpUrl url, Class<T> _class) throws IOException {
         Request request = new Request.Builder()
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .header("X-Api-Key", this.apiKey)
                 .url(url)
-                .post(formBody)
+                .post(new FormBody.Builder().build())
                 .build();
 
         Response response = client.newCall(request).execute();
@@ -148,8 +147,7 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public PaymentInfoResponse createPaymentInfoRequest(PaymentInfoRequest request) throws IOException {
-        FormBody formBody = new FormBody.Builder().build();
-        return request(formBody, request.buildUrl(URLConstants.PaymentEndpoints.INFO_PAY), PaymentInfoResponse.class);
+        return request(request.buildUrl(URLConstants.PaymentEndpoints.INFO_PAY), PaymentInfoResponse.class);
     }
 
     /**
@@ -160,8 +158,7 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public PaymentMethodsInfoResponse createPaymentMethodsRequest(PaymentMethodsInfoRequest request) throws IOException {
-        FormBody formBody = new FormBody.Builder().build();
-        return request(formBody, request.buildUrl(URLConstants.PaymentEndpoints.METHODS_PAY), PaymentMethodsInfoResponse.class);
+        return request(request.buildUrl(URLConstants.PaymentEndpoints.METHODS_PAY), PaymentMethodsInfoResponse.class);
     }
 
 
@@ -172,8 +169,7 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public BalanceInfo createBalanceInfoRequest() throws IOException {
-        RequestBody formBody = new FormBody.Builder().build();
-        return request(formBody, URLConstants.BalanceEndpoints.GET_BALANCE, BalanceInfo.class);
+        return request(URLConstants.BalanceEndpoints.GET_BALANCE, BalanceInfo.class);
     }
 
     /**
@@ -184,8 +180,7 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public PayoffResponse createPayoffRequest(PayoffRequest request) throws IOException {
-        RequestBody formBody = new FormBody.Builder().build();
-        return request(formBody, request.buildUrl(URLConstants.PayoffEndpoints.CREATE_PAYOFF), PayoffResponse.class);
+        return request(request.buildUrl(URLConstants.PayoffEndpoints.CREATE_PAYOFF), PayoffResponse.class);
     }
 
     /**
@@ -196,13 +191,11 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public PayoffInfoResponse createPayoffInfoRequest(PayoffInfoRequest request) throws IOException {
-        RequestBody formBody = new FormBody.Builder().build();
-        return request(formBody, request.buildUrl(URLConstants.PayoffEndpoints.INFO_PAYOFF), PayoffInfoResponse.class);
+        return request(request.buildUrl(URLConstants.PayoffEndpoints.INFO_PAYOFF), PayoffInfoResponse.class);
     }
 
     public PayoffMethodsInfoResponse createPayoffMethodsRequest() throws IOException {
-        RequestBody formBody = new FormBody.Builder().build();
-        return request(formBody, URLConstants.PayoffEndpoints.METHODS_PAYOFF, PayoffMethodsInfoResponse.class);
+        return request(URLConstants.PayoffEndpoints.METHODS_PAYOFF, PayoffMethodsInfoResponse.class);
     }
 
     /**
@@ -212,8 +205,7 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public ExchangeRatesInfo createExchangeRatesRequest() throws IOException {
-        RequestBody formBody = new FormBody.Builder().build();
-        return request(formBody, URLConstants.BalanceEndpoints.EXCHANGE_RATES, ExchangeRatesInfo.class);
+        return request(URLConstants.BalanceEndpoints.EXCHANGE_RATES, ExchangeRatesInfo.class);
     }
 
     /**
@@ -223,8 +215,7 @@ public class AaioClient {
      * @throws IOException If an I/O exception occurs while making request.
      */
     public PayoffSBPBanksResponse createSBPBanksRequest() throws IOException {
-        RequestBody formBody = new FormBody.Builder().build();
-        return request(formBody, URLConstants.PayoffEndpoints.SPB_BANKS_PAYOFF, PayoffSBPBanksResponse.class);
+        return request(URLConstants.PayoffEndpoints.SPB_BANKS_PAYOFF, PayoffSBPBanksResponse.class);
     }
 
     /**
