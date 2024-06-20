@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import lombok.Getter;
 import okhttp3.*;
 import org.apache.commons.codec.digest.DigestUtils;
+import ru.itskekoff.aaio.client.checker.PaymentStatusChecker;
 import ru.itskekoff.aaio.client.exceptions.AaioException;
 import ru.itskekoff.aaio.modules.account.BalanceInfo;
 import ru.itskekoff.aaio.modules.exchange.ExchangeRatesInfo;
@@ -34,11 +35,13 @@ public class AaioClient {
     private final String shopId;
     private final OkHttpClient client;
 
+    private final PaymentStatusChecker statusChecker;
+
     /**
      * Constructor for Aaio client
      *
      * @param apiKey    <a href="https://aaio.so/cabinet/api">Cabinet</a> api key
-     * @param secretKey Secret key №2 from shop settings
+     * @param secretKey Secret key №1 from shop settings
      * @param shopId    Shop id from shop settings
      * @see AaioClient
      */
@@ -73,6 +76,8 @@ public class AaioClient {
         this.secretKey = secretKey;
         this.shopId = shopId;
         this.client = client;
+
+        this.statusChecker = new PaymentStatusChecker(this);
     }
 
     /**
