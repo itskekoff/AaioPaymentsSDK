@@ -238,8 +238,10 @@ public class AaioClient {
         if (payAmount <= 0) {
             throw new IllegalArgumentException("Pay amount must be greater than zero");
         }
-
-        String str = String.format(Locale.US, "%s:%.2f:%s:%s:%s", this.shopId, payAmount, currency, this.secretKey, orderId);
+        String formattedPayAmount = payAmount % 1 == 0
+                ? String.format(Locale.US, "%.0f", payAmount)
+                : String.format(Locale.US, "%.2f", payAmount);
+        String str = String.format(Locale.US, "%s:%s:%s:%s:%s", this.shopId, formattedPayAmount, currency, this.secretKey, orderId);
         return DigestUtils.sha256Hex(str);
     }
 }

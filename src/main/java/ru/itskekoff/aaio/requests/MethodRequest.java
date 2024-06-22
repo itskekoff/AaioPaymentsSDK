@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -49,7 +50,18 @@ public abstract class MethodRequest {
                             throw new ClientException("Required field " + name + " is missing or empty");
                         }
                     } else {
-                        params.put(name, Objects.toString(value).trim());
+                        String stringValue;
+                        if (value instanceof Float || value instanceof Double) {
+                            double doubleValue = ((Number) value).doubleValue();
+                            if (doubleValue % 1 == 0) {
+                                stringValue = String.format(Locale.US, "%.0f", doubleValue);
+                            } else {
+                                stringValue = String.format(Locale.US, "%.2f", doubleValue);
+                            }
+                        } else {
+                            stringValue = Objects.toString(value).trim();
+                        }
+                        params.put(name, stringValue);
                     }
                 } catch (IllegalAccessException e) {
                     throw new ClientException("Error accessing field " + name, e);
