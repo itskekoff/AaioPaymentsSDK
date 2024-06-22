@@ -19,7 +19,7 @@ repositories {
 2. Добавьте зависимость в ваш файл build.gradle:
 ```groovy
     dependencies {
-        implementation 'com.github.itskekoff:AaioPaymentsSDK:1.2.1'
+        implementation 'com.github.itskekoff:AaioPaymentsSDK:$latest'
     }
 ```    
 
@@ -40,9 +40,11 @@ repositories {
     <dependency>
         <groupId>com.github.itskekoff</groupId>
         <artifactId>AaioPaymentsSDK</artifactId>
-        <version>1.2.1</version>
+        <version>$latest</version>
     </dependency>
-```    
+```
+
+Замените $latest на последний релиз (например: 1.2.2)
 
 ## Примеры использования
 
