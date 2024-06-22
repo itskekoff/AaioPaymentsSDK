@@ -9,21 +9,17 @@ Aaio Java SDK предоставляет удобный способ взаим�
 
 ### Gradle
 
-1. Добавьте репозитории в ваш файл settings.gradle:
+1. Добавьте репозиторий в ваш файл settings.gradle:
 ```groovy
-   dependencyResolutionManagement {
-        repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-        repositories {
-            mavenCentral()
-            maven { url 'https://jitpack.io' }
-        }
-    }
+repositories {    
+    maven { url "https://jitpack.io" }
+}
 ```    
 
 2. Добавьте зависимость в ваш файл build.gradle:
 ```groovy
     dependencies {
-        implementation 'com.github.itskekoff:AaioPaymentsSDK:1.2'
+        implementation 'com.github.itskekoff:AaioPaymentsSDK:1.2.1'
     }
 ```    
 
@@ -44,7 +40,7 @@ Aaio Java SDK предоставляет удобный способ взаим�
     <dependency>
         <groupId>com.github.itskekoff</groupId>
         <artifactId>AaioPaymentsSDK</artifactId>
-        <version>1.2</version>
+        <version>1.2.1</version>
     </dependency>
 ```    
 
