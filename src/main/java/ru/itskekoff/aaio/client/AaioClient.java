@@ -22,6 +22,7 @@ import ru.itskekoff.aaio.requests.impl.pay.PaymentURLRequest;
 
 import java.io.IOException;
 import java.net.Proxy;
+import java.util.Locale;
 
 /**
  * @author itskekoff
@@ -238,7 +239,7 @@ public class AaioClient {
             throw new IllegalArgumentException("Pay amount must be greater than zero");
         }
 
-        String str = String.format("%s:%f:%s:%s:%s", this.shopId, payAmount, currency, this.secretKey, orderId);
+        String str = String.format(Locale.US, "%s:%.2f:%s:%s:%s", this.shopId, payAmount, currency, this.secretKey, orderId);
         return DigestUtils.sha256Hex(str);
     }
 }
